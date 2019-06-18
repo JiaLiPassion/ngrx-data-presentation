@@ -1,0 +1,24 @@
+{
+  "name": "ngrx-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "rollup --config ./rollup.config.js",
+    "tsc": "tsc -p .",
+    "build": "npm run tsc && npm run bundle"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gojs": "^2.0.12"
+  },
+  "devDependencies": {
+    "rollup": "^1.15.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.3",
+    "typescript": "^3.5.2"
+  }
+}
