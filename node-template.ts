@@ -64,7 +64,8 @@ export function createNodeTemplate(partContextMenu: any) {
         isMultiline: false, // don't allow newlines in text
         editable: true // allow in-place editing by user
       },
-      new go.Binding('text', 'text').makeTwoWay()
+      new go.Binding('text', 'text').makeTwoWay(),
+      new go.Binding('stroke', 'textColor').makeTwoWay()
     ), // the label shows the node data's text
     {
       // this tooltip Adornment is shared by all nodes
@@ -79,14 +80,14 @@ export function createNodeTemplate(partContextMenu: any) {
       // this context menu Adornment is shared by all nodes
       contextMenu: partContextMenu,
       selectionChanged: function(p: any) {
-        if (p.data.text === 'gray') {
-          p.layerName = 'gray';
-          p.data.color = 'gray';
-          const layer = p.diagram.findLayer('gray');
-          if (layer) {
-            layer.opacity = 0.8;
-          }
-        }
+        // if (p.data.text === 'gray') {
+        //   p.layerName = 'gray';
+        //   p.diagram.model.setDataProperty(p.data, 'color', 'gray');
+        //   const layer = p.diagram.findLayer('gray');
+        //   if (layer) {
+        //     layer.opacity = 0.8;
+        //   }
+        // }
         console.log('p is selected', p.data);
       }
     }
@@ -125,7 +126,7 @@ export function createLinkTemplate(partContextMenu: any) {
         go.TextBlock, // the label text
         {
           textAlign: 'center',
-          font: '10pt helvetica, arial, sans-serif',
+          font: '20pt helvetica, arial, sans-serif',
           stroke: '#555555',
           margin: 4,
           editable: true
@@ -191,7 +192,7 @@ export function createGroupTemplate(partContextMenu: any) {
     $(
       go.TextBlock,
       {
-        font: 'bold 19px sans-serif',
+        font: 'bold 26px sans-serif',
         isMultiline: false, // don't allow newlines in text
         editable: true // allow in-place editing by user
       },

@@ -1,0 +1,122 @@
+{
+  "class": "GraphLinksModel",
+  "nodeDataArray": [
+    {
+      "key": 1,
+      "text": "View",
+      "color": "#ff0029",
+      "loc": "-566.7923787483046 177.4873087516853",
+      "size": "186 314",
+      "frac": 0,
+      "at": 2,
+      "textColor": "#FFFFFF"
+    },
+    {
+      "key": 2,
+      "text": "EntityCollectionService",
+      "color": "#377eb8",
+      "loc": "-196.90713500253815 174.5",
+      "size": "286.60097249830795 301",
+      "group": -9,
+      "textColor": "#FFFFFF"
+    },
+    {
+      "key": 3,
+      "text": "EntityCollectionReducer",
+      "color": "#66a61e",
+      "group": 5,
+      "loc": "161.270121251692 115.81852008404742",
+      "size": "306 54",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "key": 5,
+      "text": "Reducer",
+      "color": "green",
+      "isGroup": true,
+      "group": -8,
+      "loc": "8.27012125169199 88.81852008404742"
+    },
+    {
+      "text": "EntityCollectionCache",
+      "color": "#984ea3",
+      "key": -5,
+      "group": -10,
+      "loc": "161.99999999999997 240.99957273945154",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "EntityEffects",
+      "color": "#00d2d5",
+      "key": -6,
+      "group": -8,
+      "loc": "425.270121251692 175.8312113323551",
+      "size": "171 188",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "DataService",
+      "color": "#ff7f00",
+      "key": -7,
+      "group": -8,
+      "loc": "603.9882812500001 175.3312113323551",
+      "size": "164 187",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "ngrx",
+      "isGroup": true,
+      "color": "blue",
+      "key": -8,
+      "loc": "-3.2298787483080105 56.743227115297415",
+      "size": "712.2181599983077 320",
+      "group": -14
+    },
+    {
+      "text": "Facade",
+      "isGroup": true,
+      "color": "blue",
+      "key": -9,
+      "loc": "-340.2076212516921 24",
+      "group": -14
+    },
+    {
+      "text": "Store",
+      "isGroup": true,
+      "color": "blue",
+      "key": -10,
+      "group": -8,
+      "loc": "25.385060625845995 218.74322711529757"
+    },
+    {
+      "text": "Backend",
+      "color": "#af8d00",
+      "key": -11,
+      "loc": "804.2170918758462 174.24365437584603",
+      "size": "127 313",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "gray",
+      "color": "gray",
+      "key": -12,
+      "loc": "344.890920000846 168.74365437584612",
+      "size": "723 368",
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "ngrx/data",
+      "isGroup": true,
+      "color": "blue",
+      "key": -14,
+      "loc": "-351.7076212516921 -8.075292968750006"
+    }
+  ],
+  "linkDataArray": [
+    {
+      "from": 1,
+      "to": 2,
+      "text": "Dispatch"
+    }
+  ]
+}

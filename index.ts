@@ -7,7 +7,7 @@ import {
   createContextMenu
 } from './node-template';
 import { initMenu } from './menu';
-import { initTokens, initTokenMap } from './transition';
+import { initTokenMap } from './transition';
 import { initCommandButtons } from './button';
 import { resetLinkText } from './line';
 
@@ -15,14 +15,6 @@ let diagram: go.Diagram;
 
 window.addEventListener('load', () => {
   initDiagram('myDiagramDiv');
-});
-
-window.addEventListener('unload', () => {
-  if (diagram) {
-    const data = diagram.model.toJson();
-    console.log('data', data);
-    window.localStorage.setItem('gojs.json', data);
-  }
 });
 
 export function initDiagram(div: string) {
@@ -36,9 +28,6 @@ export function initDiagram(div: string) {
     'commandHandler.archetypeGroupData': { text: 'Group', isGroup: true, color: 'blue' }
   });
   const foreLayer = diagram.findLayer('Foreground');
-  const hiddenLayer = $(go.Layer, { name: 'hidden' });
-  hiddenLayer.visible = false;
-  diagram.addLayerBefore(hiddenLayer, foreLayer!);
 
   const partContextMenu = initMenu();
   diagram.nodeTemplate = createNodeTemplate(partContextMenu);
@@ -50,7 +39,16 @@ export function initDiagram(div: string) {
   initData(diagram);
   resetLinkText(diagram);
   initCommandButtons(diagram);
-  // initTokens(diagram);
+
+  const hiddenLayer = $(go.Layer, { name: 'hidden' });
+  hiddenLayer.opacity = 0.8;
+  hiddenLayer.visible = false;
+  diagram.addLayerBefore(hiddenLayer, foreLayer!);
+  diagram.nodes.each(node => {
+    if (node.data.text === 'gray') {
+      node.layerName = 'hidden';
+    }
+  });
 }
 
 export function initData(diagram: go.Diagram) {

@@ -1,27 +1,39 @@
 import * as go from 'gojs';
 import { setLinkText } from './line';
 import { initTokens } from './transition';
+import { resetColors } from './color';
 export function initCommandButtons(diagram: go.Diagram) {
+  const dispatchPart = createButton(diagram, 'Dispatch', startDispatch);
+  dispatchPart.location = new go.Point(-100, -200);
+  const resetColorPart = createButton(diagram, 'Reset Colors', () => resetColors(diagram));
+  resetColorPart.location = new go.Point(0, -200);
+}
+
+function createButton(diagram: go.Diagram, text: string, callback: any) {
   const $ = go.GraphObject.make;
-  diagram.add(
+
+  const part = $(
+    go.Part,
+    [
+      {
+        locationSpot: go.Spot.Center,
+        layerName: 'Foreground',
+        resizable: true,
+        resizeObjectName: 'PANEL'
+      },
+      new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
+      new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)
+    ],
+    $(go.Shape, 'Rectangle', { fill: null, stroke: null }),
     $(
-      go.Part,
-      { locationSpot: go.Spot.Center, layerName: 'Foreground' },
-      $(go.Shape, 'Rectangle', { fill: 'blue' }),
-      $(
-        go.Panel,
-        'Vertical',
-        { margin: 3 },
-        $('Button', { margin: 2, click: startDispatch }, $(go.TextBlock, 'Dispatch!')),
-        $(
-          go.TextBlock,
-          new go.Binding('text', 'clickCount', function(c) {
-            return 'Clicked ' + c + ' times.';
-          })
-        )
-      )
+      go.Panel,
+      'Vertical',
+      { margin: 3, name: 'PANEL' },
+      $('Button', { margin: 2, click: callback }, $(go.TextBlock, text))
     )
   );
+  diagram.add(part);
+  return part;
 }
 
 function startDispatch(e: any, obj: any) {

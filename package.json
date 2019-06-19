@@ -13,7 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gojs": "^2.0.12"
+    "gojs": "^2.0.12",
+    "google-palette": "^1.1.0"
   },
   "devDependencies": {
     "rollup": "^1.15.6",
