@@ -1,0 +1,64 @@
+[
+  {
+    "link": {
+      "from": 1,
+      "to": -6,
+      "text": "Dispatch Action",
+      "textPos": "start"
+    }
+  },
+  {
+    "link": {
+      "from": -6,
+      "to": -7,
+      "text": "Request"
+    }
+  },
+  {
+    "link": {
+      "from": -7,
+      "to": -11,
+      "text": "HttpRequest"
+    }
+  },
+  {
+    "link": {
+      "from": -11,
+      "to": -7,
+      "text": "HttpResponse",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": -7,
+      "to": -6,
+      "text": "Response",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": -6,
+      "to": 3,
+      "text": "Action",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": 3,
+      "to": -5,
+      "text": "State",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": -5,
+      "to": 1,
+      "text": "Selector",
+      "reverse": true
+    }
+  }
+]

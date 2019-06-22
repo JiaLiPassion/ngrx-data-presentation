@@ -1,0 +1,127 @@
+{
+  "class": "GraphLinksModel",
+  "nodeDataArray": [
+    {
+      "key": 1,
+      "text": "View",
+      "color": "#ff0029",
+      "loc": "-575.7923787483048 170.4873087516853",
+      "size": "186 314",
+      "frac": 0,
+      "at": -6,
+      "textColor": "#FFFFFF"
+    },
+    {
+      "key": 3,
+      "text": "Reducer",
+      "color": "#66a61e",
+      "group": -8,
+      "loc": "-221.729878748308 113.81852008404736",
+      "size": "306 54",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -5
+    },
+    {
+      "text": "Store",
+      "color": "#984ea3",
+      "key": -5,
+      "group": -8,
+      "loc": "-220.93525187415406 291.9995727394515",
+      "textColor": "#FFFFFF",
+      "size": "300 44.512691248307945",
+      "frac": 0,
+      "at": 1
+    },
+    {
+      "text": "Effects",
+      "color": "#00d2d5",
+      "key": -6,
+      "group": -8,
+      "loc": "32.270121251691734 170.8312113323551",
+      "size": "105 188",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -7
+    },
+    {
+      "text": "DataService",
+      "color": "#ff7f00",
+      "key": -7,
+      "loc": "296.48828125000017 170.331211332355",
+      "size": "163 187",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -6
+    },
+    {
+      "text": "Backend",
+      "color": "#af8d00",
+      "key": -11,
+      "loc": "580.2170918758463 171.74365437584603",
+      "size": "127 292",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -7
+    },
+    {
+      "text": "ngrx",
+      "isGroup": true,
+      "color": "blue",
+      "key": -8,
+      "loc": "-374.729878748308 76.83121133235511"
+    }
+  ],
+  "linkDataArray": [
+    {
+      "from": 1,
+      "to": 3,
+      "text": ""
+    },
+    {
+      "from": 3,
+      "to": -5,
+      "text": "State"
+    },
+    {
+      "from": 1,
+      "to": -6,
+      "category": "left",
+      "text": "Dispatch Action"
+    },
+    {
+      "from": -6,
+      "to": 3,
+      "text": "Action"
+    },
+    {
+      "from": -6,
+      "to": -7,
+      "category": "two",
+      "text": "Request"
+    },
+    {
+      "from": -7,
+      "to": -6,
+      "category": "two",
+      "text": "Response"
+    },
+    {
+      "from": -7,
+      "to": -11,
+      "category": "two",
+      "text": "HttpRequest"
+    },
+    {
+      "from": -11,
+      "to": -7,
+      "category": "two",
+      "text": "HttpResponse"
+    },
+    {
+      "from": -5,
+      "to": 1,
+      "text": ""
+    }
+  ]
+}

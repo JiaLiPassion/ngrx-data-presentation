@@ -1,0 +1,71 @@
+{
+  "class": "GraphLinksModel",
+  "nodeDataArray": [
+    {
+      "key": 1,
+      "text": "View",
+      "color": "#ff0029",
+      "loc": "-633.7923787483043 177.48730875168525",
+      "size": "186 314",
+      "frac": 0,
+      "at": 2,
+      "textColor": "#FFFFFF"
+    },
+    {
+      "key": 2,
+      "text": "EntityService",
+      "color": "#377eb8",
+      "loc": "-196.90713500253815 174.5",
+      "size": "286.60097249830795 301",
+      "group": -9,
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": 1
+    },
+    {
+      "text": "Service",
+      "isGroup": true,
+      "color": "blue",
+      "key": -9,
+      "loc": "-340.2076212516921 24",
+      "frac": 0,
+      "at": -11
+    },
+    {
+      "text": "Backend",
+      "color": "#af8d00",
+      "key": -11,
+      "loc": "136.21709187584617 173.24365437584595",
+      "size": "127 313",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -9
+    }
+  ],
+  "linkDataArray": [
+    {
+      "from": 1,
+      "to": 2,
+      "category": "two",
+      "text": "getAllContainers"
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "category": "two",
+      "text": "containers"
+    },
+    {
+      "from": -9,
+      "to": -11,
+      "category": "two",
+      "text": "HttpRequest http://api/containers"
+    },
+    {
+      "from": -11,
+      "to": -9,
+      "category": "two",
+      "text": "HttpResponse containers"
+    }
+  ]
+}

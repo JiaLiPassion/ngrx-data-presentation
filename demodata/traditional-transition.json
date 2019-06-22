@@ -1,0 +1,32 @@
+[
+  {
+    "link": {
+      "from": 1,
+      "to": 2,
+      "text": "getAllContainers"
+    }
+  },
+  {
+    "link": {
+      "from": -9,
+      "to": -11,
+      "text": "HttpRequest"
+    }
+  },
+  {
+    "link": {
+      "from": -11,
+      "to": -9,
+      "text": "HttpResponse",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": 2,
+      "to": 1,
+      "text": "containers",
+      "reverse": true
+    }
+  }
+]
