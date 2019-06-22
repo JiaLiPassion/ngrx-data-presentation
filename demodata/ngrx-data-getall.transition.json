@@ -1,0 +1,128 @@
+[
+  {
+    "link": {
+      "from": 1,
+      "to": 2,
+      "text": "getAll",
+      "textPos": "start"
+    }
+  },
+  {
+    "link": {
+      "from": 2,
+      "to": -6,
+      "text": "Dispatch Action",
+      "data": {
+        "type": "[Container ] @ngrx/data/query-all",
+        "payload": {
+          "entityName": "Container",
+          "entityOp": "@ngrx/data/query-all",
+          "data": null,
+          "correlationId": "CRID1"
+        }
+      }
+    }
+  },
+  {
+    "link": {
+      "from": -6,
+      "to": -7,
+      "text": "getAll"
+    }
+  },
+  {
+    "link": {
+      "from": -7,
+      "to": -11,
+      "text": "GET api/containers"
+    }
+  },
+  {
+    "link": {
+      "from": -11,
+      "to": -7,
+      "text": "HttpResponse",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": -7,
+      "to": -6,
+      "text": "Containers",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": -6,
+      "to": 3,
+      "text": "Action",
+      "reverse": true,
+      "data": {
+        "type": "[Container] @ngrx/data/query-all/success",
+        "payload": {
+          "entityName": "Container",
+          "entityOp": "@ngrx/data/query-all/success",
+          "data": [
+            {
+              "id": 1,
+              "name": "ubuntu"
+            },
+            {
+              "id": 2,
+              "name": "alpine"
+            }
+          ],
+          "correlationId": "CRID1"
+        }
+      }
+    }
+  },
+  {
+    "link": {
+      "from": 3,
+      "to": -5,
+      "text": "State",
+      "reverse": true,
+      "data": {
+        "entityCache": {
+          "Container": {
+            "ids": [1, 2, 3, 4],
+            "entities": {
+              "1": {
+                "id": 1,
+                "name": "ubuntu"
+              },
+              "2": {
+                "id": 2,
+                "name": "alpine"
+              }
+            },
+            "entityName": "Container",
+            "filter": "",
+            "loaded": true,
+            "loading": false,
+            "changeState": {}
+          }
+        }
+      }
+    }
+  },
+  {
+    "link": {
+      "from": -5,
+      "to": 2,
+      "text": "Selector",
+      "reverse": true
+    }
+  },
+  {
+    "link": {
+      "from": 2,
+      "to": 1,
+      "text": "Selector",
+      "reverse": true
+    }
+  }
+]

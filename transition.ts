@@ -1,4 +1,5 @@
 import * as go from 'gojs';
+import { findNode } from './node';
 let indicator: go.Part;
 
 export function initTokenMap(diagram: go.Diagram) {
@@ -9,32 +10,39 @@ export function initTokenMap(diagram: go.Diagram) {
     $(
       go.Shape,
       'Circle',
-      { width: 12, height: 12, fill: 'green', strokeWidth: 0 },
+      { width: 16, height: 16, fill: 'red', strokeWidth: 0 },
       new go.Binding('fill', 'color')
     )
   );
   diagram.add(indicator);
-  // indicator.location = new go.Point(-500, -500);
+  indicator.layerName = 'hidden';
 }
 
-export function initTokens(diagram: go.Diagram) {
+export function initTokens(
+  diagram: go.Diagram,
+  nodeFromKey: number,
+  nodeToKey: number,
+  callback: any
+) {
+  if (!indicator) {
+    initTokenMap(diagram);
+  }
+  indicator.layerName = 'Foreground';
   const oldskips = diagram.skipsUndoManager;
   diagram.skipsUndoManager = true;
-  // diagram.model.addNodeDataCollection([{ category: 'token', at: 1, color: 'green' }]);
   diagram.skipsUndoManager = oldskips;
-  // resetTokens(diagram);
   window.requestAnimationFrame(() => {
-    updateTokens(diagram, 1);
+    updateTokens(diagram, nodeFromKey, nodeToKey, callback);
   });
 }
 
-function updateTokens(diagram: go.Diagram, nodeKey: number) {
+function updateTokens(diagram: go.Diagram, nodeFromKey: number, nodeToKey: number, callback: any) {
   const oldskips = diagram.skipsUndoManager;
   diagram.skipsUndoManager = true; // don't record these changes in the UndoManager!
   const temp = new go.Point();
   let hasDest = false;
   diagram.nodes.each(function(node) {
-    if (node.key !== nodeKey) {
+    if (node.key !== nodeFromKey) {
       return;
     }
     const from = node;
@@ -42,8 +50,8 @@ function updateTokens(diagram: go.Diagram, nodeKey: number) {
     const data = from.data;
     let frac = data.frac;
     if (frac === undefined) frac = 0.0;
-    const next = data.next;
-    const to = diagram.findNodeForKey(next);
+    const next = nodeToKey;
+    const to = findNode(diagram, nodeToKey);
     if (to === null) {
       // nowhere to go?
       positionTokenAtNode(indicator, from); // temporarily stay at the current node
@@ -69,15 +77,17 @@ function updateTokens(diagram: go.Diagram, nodeKey: number) {
         hasDest = false;
       } else {
         // otherwise, move fractionally closer to the NEXT node
-        data.frac = frac + 0.01;
+        data.frac = frac + 0.05;
       }
     }
   });
   diagram.skipsUndoManager = oldskips;
   if (hasDest) {
     window.requestAnimationFrame(() => {
-      updateTokens(diagram, nodeKey);
+      updateTokens(diagram, nodeFromKey, nodeToKey, callback);
     });
+  } else {
+    callback();
   }
 }
 

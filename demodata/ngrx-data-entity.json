@@ -5,7 +5,7 @@
       "key": 1,
       "text": "View",
       "color": "#ff0029",
-      "loc": "-566.7923787483046 177.4873087516853",
+      "loc": "-568.7923787483045 202.4873087516853",
       "size": "186 314",
       "frac": 0,
       "at": 2,
@@ -15,48 +15,55 @@
       "key": 2,
       "text": "EntityCollectionService",
       "color": "#377eb8",
-      "loc": "-272.2076212516922 176.49999999999994",
+      "loc": "-271.2076212516923 204.49999999999991",
       "size": "205 301",
       "group": -13,
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": 1
     },
     {
       "key": 3,
       "text": "EntityCollectionReducer",
       "color": "#66a61e",
       "group": -9,
-      "loc": "64.77012125169199 117.81852008404732",
+      "loc": "64.77012125169199 144.02198891301822",
       "size": "306 54",
-      "textColor": "#FFFFFF"
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -5
     },
     {
       "text": "EntityCollectionCache",
       "color": "#984ea3",
       "key": -5,
       "group": -10,
-      "loc": "65.50000000000003 242.99957273945154",
-      "textColor": "#FFFFFF"
+      "loc": "61.499999999999986 336.20304156842246",
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": 2
     },
     {
       "text": "EntityEffects",
       "color": "#00d2d5",
       "key": -6,
       "group": -12,
-      "loc": "292.7701212516917 177.83121133235517",
+      "loc": "309.7701212516918 202.03468016132612",
       "size": "101 188",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": 3
     },
     {
       "text": "DataService",
       "color": "#ff7f00",
       "key": -7,
       "group": -12,
-      "loc": "453.98828125000085 177.33121133235517",
+      "loc": "453.98828125000074 203.53468016132612",
       "size": "159 187",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": -6
     },
     {
       "text": "Store",
@@ -64,23 +71,24 @@
       "color": "blue",
       "key": -10,
       "group": -12,
-      "loc": "-71.11493937415395 220.74322711529757"
+      "loc": "-72.11493937415395 316.9466959442685"
     },
     {
       "text": "Backend",
       "color": "#af8d00",
       "key": -11,
-      "loc": "639.2170918758463 176.24365437584603",
-      "size": "127 313",
+      "loc": "454.21709187584634 441.24365437584606",
+      "size": "127 151",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": -7
     },
     {
       "text": "Reducer",
       "isGroup": true,
       "color": "blue",
       "key": -9,
-      "loc": "-88.22987874830801 90.81852008404732",
+      "loc": "-88.22987874830801 117.02198891301825",
       "group": -12
     },
     {
@@ -88,7 +96,7 @@
       "isGroup": true,
       "color": "blue",
       "key": -12,
-      "loc": "-99.72987874830801 51.16285602154732",
+      "loc": "-99.72987874830801 77.36632485051825",
       "group": -13
     },
     {
@@ -96,56 +104,81 @@
       "isGroup": true,
       "color": "blue",
       "key": -13,
-      "loc": "-374.7076212516922 11.507191959047319"
+      "loc": "-373.7076212516922 45.007191959047326"
+    },
+    {
+      "text": "EntityAdapter",
+      "color": "#7f80cd",
+      "key": -14,
+      "loc": "74.73857625084602 240.99999999999997",
+      "size": "312 38.51269124830794",
+      "group": -15,
+      "textColor": "#FFFFFF"
+    },
+    {
+      "text": "ngrx/entity",
+      "isGroup": true,
+      "color": "blue",
+      "key": -15,
+      "loc": "-81.26142374915398 221.743654375846"
     }
   ],
   "linkDataArray": [
     {
       "from": 1,
       "to": 2,
-      "text": "Entity API",
-      "category": "two"
+      "category": "two",
+      "text": "getAll"
     },
     {
       "from": 2,
-      "to": -6
+      "to": -6,
+      "text": ""
     },
     {
       "from": -6,
       "to": -7,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -7,
       "to": -11,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -11,
       "to": -7,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -7,
       "to": -6,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -6,
-      "to": 3
+      "to": 3,
+      "text": ""
     },
     {
       "from": 3,
-      "to": -5
+      "to": -5,
+      "text": ""
     },
     {
       "from": -5,
-      "to": 2
+      "to": 2,
+      "text": ""
     },
     {
       "from": 2,
       "to": 1,
-      "category": "two"
+      "category": "two",
+      "text": ""
     }
   ]
 }

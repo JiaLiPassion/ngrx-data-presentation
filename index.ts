@@ -4,23 +4,80 @@ import {
   createLinkTemplate,
   createGroupTemplate,
   createTooltip,
-  createContextMenu
+  createContextMenu,
+  createTwoWayLinkTemplate,
+  createLeftAlignLinkTemplate
 } from './node-template';
 import { initMenu } from './menu';
-import { initTokenMap } from './transition';
-import { initCommandButtons } from './button';
-import { resetLinkText } from './line';
+import { loadAndStartTransition } from './button';
+import traditional from './demodata/traditional.json';
+import traditionalTransition from './demodata/traditional-transition.json';
+import ngrx from './demodata/ngrx.json';
+import ngrxTransition from './demodata/ngrx-transition.json';
+import ngrxData from './demodata/ngrx-data.json';
+import ngrxDataTransition from './demodata/ngrx-data-transition.json';
+import ngrxHidden from './demodata/ngrx-hidden.json';
+import ngrxGetAll from './demodata/ngrx-data-getall.json';
+import ngrxGetAllTransition from './demodata/ngrx-data-getall.transition.json';
+import ngrxDataEntity from './demodata/ngrx-data-entity.json';
 
 let diagram: go.Diagram;
+const dataMap: any = {
+  traditional: {
+    diagram: traditional,
+    transitions: traditionalTransition
+  },
+  ngrx: {
+    diagram: ngrx,
+    transitions: ngrxTransition
+  },
+  ngrxHidden: {
+    diagram: ngrxHidden,
+    transitions: []
+  },
+  ngrxData: {
+    diagram: ngrxData,
+    transitions: ngrxDataTransition
+  },
+  ngrxDataGetAll: {
+    diagram: ngrxGetAll,
+    transitions: ngrxGetAllTransition
+  },
+  ngrxDataEntity: {
+    diagram: ngrxDataEntity,
+    transitions: []
+  }
+};
 
 window.addEventListener('load', () => {
   initDiagram('myDiagramDiv');
+  const urlParams = new URLSearchParams(window.location.search);
+  const autoStart = urlParams.get('auto') === 'true';
+  const program = urlParams.get('program');
+  if (!program) {
+    return;
+  }
+  const data = dataMap[program];
+  if (!data) {
+    return;
+  }
+  if (autoStart) {
+    loadAndStartTransition(diagram, data.diagram, data.transitions, true);
+  } else {
+    let idx: any = -1;
+    document.addEventListener('keypress', (ev: KeyboardEvent) => {
+      if (ev.key === 'Enter') {
+        idx = loadAndStartTransition(diagram, data.diagram, data.transitions, false, idx);
+      }
+    });
+  }
 });
 
 export function initDiagram(div: string) {
   const $ = go.GraphObject.make;
   diagram = $(go.Diagram, div, {
     'undoManager.isEnabled': true,
+    'toolManager.toolTipDuration': 10000,
     // allow double-click in background to create a new node
     'clickCreatingTool.archetypeNodeData': { text: 'Node', color: 'white' },
 
@@ -31,14 +88,21 @@ export function initDiagram(div: string) {
 
   const partContextMenu = initMenu();
   diagram.nodeTemplate = createNodeTemplate(partContextMenu);
-  diagram.linkTemplate = createLinkTemplate(partContextMenu);
-  initTokenMap(diagram);
+  const linkTemp = createLinkTemplate(partContextMenu);
+  const linkTwowayTemp = createTwoWayLinkTemplate(partContextMenu);
+  const linkLeftTemp = createLeftAlignLinkTemplate(partContextMenu);
+  const tempMap: any = new go.Map();
+  tempMap.add('', linkTemp);
+  tempMap.add('two', linkTwowayTemp);
+  tempMap.add('left', linkLeftTemp);
+  diagram.linkTemplateMap = tempMap;
+  // initTokenMap(diagram);
   diagram.groupTemplate = createGroupTemplate(partContextMenu);
   diagram.toolTip = createTooltip();
   diagram.contextMenu = createContextMenu();
-  initData(diagram);
-  resetLinkText(diagram);
-  initCommandButtons(diagram);
+  // initData(diagram);
+  // resetLinkText(diagram);
+  // initCommandButtons(diagram);
 
   const hiddenLayer = $(go.Layer, { name: 'hidden' });
   hiddenLayer.opacity = 0.8;

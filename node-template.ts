@@ -1,4 +1,6 @@
 import * as go from 'gojs';
+import { link } from 'fs';
+import { resetColors } from './color';
 
 // To simplify this code we define a function for creating a context menu button:
 export function makeButton(text: string, action: any, visiblePredicate?: any) {
@@ -18,6 +20,9 @@ export function makeButton(text: string, action: any, visiblePredicate?: any) {
 
 export function nodeInfo(d: any) {
   // Tooltip info for a node data object
+  if (d && d.tooltip) {
+    return d.tooltip;
+  }
   var str = 'Node ' + d.key + ': ' + d.text + '\n';
   if (d.group) str += 'member of ' + d.group;
   else str += 'top-level node';
@@ -60,12 +65,13 @@ export function createNodeTemplate(partContextMenu: any) {
       {
         font: 'bold 24px sans-serif',
         stroke: '#333',
-        margin: 6, // make some extra space for the shape around the text
-        isMultiline: false, // don't allow newlines in text
+        margin: 3, // make some extra space for the shape around the text
+        isMultiline: true, // don't allow newlines in text
         editable: true // allow in-place editing by user
       },
       new go.Binding('text', 'text').makeTwoWay(),
-      new go.Binding('stroke', 'textColor').makeTwoWay()
+      new go.Binding('stroke', 'textColor').makeTwoWay(),
+      new go.Binding('font', 'font').makeTwoWay()
     ), // the label shows the node data's text
     {
       // this tooltip Adornment is shared by all nodes
@@ -73,7 +79,10 @@ export function createNodeTemplate(partContextMenu: any) {
         'ToolTip',
         $(
           go.TextBlock,
-          { margin: 4 }, // the tooltip shows the result of calling nodeInfo(data)
+          {
+            margin: 4,
+            font: 'bold 20px sans-serif'
+          }, // the tooltip shows the result of calling nodeInfo(data)
           new go.Binding('text', '', nodeInfo)
         )
       ),
@@ -97,15 +106,33 @@ export function createNodeTemplate(partContextMenu: any) {
 
 export function linkInfo(d: any) {
   // Tooltip info for a link data object
+  if (d && d.tooltip) {
+    return d.tooltip;
+  }
   return 'Link:\nfrom ' + d.from + ' to ' + d.to;
 }
 
 // The link shape and arrowhead have their stroke brush data bound to the "color" property
-export function createLinkTemplate(partContextMenu: any) {
+export function createTwoWayLinkTemplate(partContextMenu: any) {
+  return createLinkTemplate(partContextMenu, true);
+}
+
+export function createLeftAlignLinkTemplate(partContextMenu: any) {
+  return createLinkTemplate(partContextMenu, false, true);
+}
+
+// The link shape and arrowhead have their stroke brush data bound to the "color" property
+export function createLinkTemplate(partContextMenu: any, curve = false, left = true) {
   const $ = go.GraphObject.make;
   return $(
     go.Link,
-    { toShortLength: 3, relinkableFrom: true, relinkableTo: true }, // allow the user to relink existing links
+    {
+      toShortLength: 3,
+      relinkableFrom: true,
+      relinkableTo: true,
+      curve: curve ? go.Link.Bezier : undefined,
+      curviness: curve ? 20 : undefined
+    }, // allow the user to relink existing links
     $(go.Shape, { strokeWidth: 2 }, new go.Binding('stroke', 'color')),
     $(go.Shape, { toArrow: 'Standard', stroke: null }, new go.Binding('fill', 'color')),
     $(
@@ -113,23 +140,31 @@ export function createLinkTemplate(partContextMenu: any) {
       'Auto',
       $(
         go.Shape, // the label background, which becomes transparent around the edges
+        'Rectangle',
         {
-          fill: $(go.Brush, 'Radial', {
-            0: 'rgb(240, 240, 240)',
-            0.3: 'rgb(240, 240, 240)',
-            1: 'rgba(240, 240, 240, 0)'
-          }),
+          //   fill: $(go.Brush, 'Radial', {
+          //     0: 'rgb(240, 240, 240)',
+          //     0.3: 'rgb(240, 240, 240)',
+          //     1: 'rgba(240, 240, 240, 0)'
+          //   }),
+          fill: null,
           stroke: null
-        }
+        },
+        new go.Binding('fill', 'textFill')
       ),
       $(
         go.TextBlock, // the label text
         {
           textAlign: 'center',
-          font: '20pt helvetica, arial, sans-serif',
+          segmentOffset: left ? new go.Point(NaN, NaN) : new go.Point(0, -10),
+          segmentFraction: left ? 0.5 : undefined,
+          segmentIndex: left ? 0 : undefined,
+          segmentOrientation: left ? go.Link.OrientUpright : undefined,
+          font: '16pt helvetica, arial, sans-serif',
           stroke: '#555555',
           margin: 4,
-          editable: true
+          editable: true,
+          isMultiline: true
         },
         new go.Binding('text', 'text')
       )
@@ -140,7 +175,10 @@ export function createLinkTemplate(partContextMenu: any) {
         'ToolTip',
         $(
           go.TextBlock,
-          { margin: 4 }, // the tooltip shows the result of calling linkInfo(data)
+          {
+            margin: 4,
+            font: 'bold 20px sans-serif'
+          }, // the tooltip shows the result of calling linkInfo(data)
           new go.Binding('text', '', linkInfo)
         )
       ),
@@ -287,15 +325,63 @@ export function createContextMenu() {
       }
     ),
     makeButton(
+      'Color',
+      function(e: any, obj: any) {
+        resetColors(e.diagram);
+      },
+      function(o: any) {
+        return true;
+      }
+    ),
+    makeButton(
+      'Smaller',
+      function(e: any, obj: any) {
+        setFont(e.diagram, true);
+      },
+      function(o: any) {
+        return true;
+      }
+    ),
+    makeButton(
+      'Bigger',
+      function(e: any, obj: any) {
+        setFont(e.diagram, false);
+      },
+      function(o: any) {
+        return true;
+      }
+    ),
+    makeButton(
       'Save',
       function(e: any, obj: any) {
-        const data = e.diagram.model.toJson();
-        console.log('data', data);
-        window.localStorage.setItem('gojs.json', data);
+        const data = JSON.parse(e.diagram.model.toJson());
+        const filteredData = {
+          ...data,
+          linkDataArray: data.linkDataArray.map((link: any) => ({
+            from: link.from,
+            to: link.to,
+            category: link.category,
+            text: link.text
+          }))
+        };
+        console.log('data', JSON.stringify(filteredData));
+        window.localStorage.setItem('gojs.json', JSON.stringify(filteredData));
       },
       function(o: any) {
         return true;
       }
     )
   );
+}
+
+export function setFont(diagram: go.Diagram, smaller: boolean) {
+  diagram.nodes.each(node => {
+    const currentFont = node.data.font;
+    let newFont: any;
+    if (currentFont) {
+      const currentFontSize = currentFont.substring(5, 7);
+      newFont = smaller ? currentFontSize - 2 : currentFontSize + 2;
+    }
+    diagram.model.setDataProperty(node.data, 'font', `bold ${newFont}px sans-serif`);
+  });
 }

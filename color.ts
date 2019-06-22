@@ -22,7 +22,7 @@ function padZero(str: string, len: number = 2) {
   return (zeros + str).slice(-len);
 }
 
-function invertColor(hex: string, bw = false) {
+export function invertColor(hex: string, bw = false) {
   if (hex.indexOf('#') === 0) {
     hex = hex.slice(1);
   }

@@ -27,7 +27,7 @@
       "color": "#984ea3",
       "key": -5,
       "group": -8,
-      "loc": "-220.93525187415406 291.9995727394515",
+      "loc": "-217.935251874154 224.99957273945154",
       "textColor": "#FFFFFF",
       "size": "300 44.512691248307945",
       "frac": 0,
@@ -42,14 +42,14 @@
       "size": "105 188",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -7
+      "at": 3
     },
     {
       "text": "DataService",
       "color": "#ff7f00",
       "key": -7,
-      "loc": "296.48828125000017 170.331211332355",
-      "size": "163 187",
+      "loc": "17.48828125000017 372.831211332355",
+      "size": "163 112",
       "textColor": "#FFFFFF",
       "frac": 0,
       "at": -6
@@ -58,8 +58,8 @@
       "text": "Backend",
       "color": "#af8d00",
       "key": -11,
-      "loc": "580.2170918758463 171.74365437584603",
-      "size": "127 292",
+      "loc": "-316.78290812415366 372.74365437584606",
+      "size": "127 114",
       "textColor": "#FFFFFF",
       "frac": 0,
       "at": -7
@@ -81,47 +81,47 @@
     {
       "from": 3,
       "to": -5,
-      "text": "State"
+      "text": ""
     },
     {
       "from": 1,
       "to": -6,
       "category": "left",
-      "text": "Dispatch Action"
+      "text": ""
     },
     {
       "from": -6,
       "to": 3,
-      "text": "Action"
+      "text": ""
     },
     {
       "from": -6,
       "to": -7,
       "category": "two",
-      "text": "Request"
+      "text": ""
     },
     {
       "from": -7,
       "to": -6,
       "category": "two",
-      "text": "Response"
+      "text": ""
     },
     {
       "from": -7,
       "to": -11,
       "category": "two",
-      "text": "HttpRequest"
+      "text": ""
     },
     {
       "from": -11,
       "to": -7,
       "category": "two",
-      "text": "HttpResponse"
+      "text": ""
     },
     {
       "from": -5,
       "to": 1,
-      "text": ""
+      "text": "Selector"
     }
   ]
 }

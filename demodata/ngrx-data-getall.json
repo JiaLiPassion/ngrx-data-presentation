@@ -19,7 +19,8 @@
       "size": "205 301",
       "group": -13,
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": 1
     },
     {
       "key": 3,
@@ -28,7 +29,9 @@
       "group": -9,
       "loc": "64.77012125169199 117.81852008404732",
       "size": "306 54",
-      "textColor": "#FFFFFF"
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": -5
     },
     {
       "text": "EntityCollectionCache",
@@ -36,7 +39,9 @@
       "key": -5,
       "group": -10,
       "loc": "65.50000000000003 242.99957273945154",
-      "textColor": "#FFFFFF"
+      "textColor": "#FFFFFF",
+      "frac": 0,
+      "at": 2
     },
     {
       "text": "EntityEffects",
@@ -46,7 +51,8 @@
       "loc": "292.7701212516917 177.83121133235517",
       "size": "101 188",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": 3
     },
     {
       "text": "DataService",
@@ -56,7 +62,8 @@
       "loc": "453.98828125000085 177.33121133235517",
       "size": "159 187",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": -6
     },
     {
       "text": "Store",
@@ -70,10 +77,11 @@
       "text": "Backend",
       "color": "#af8d00",
       "key": -11,
-      "loc": "639.2170918758463 176.24365437584603",
-      "size": "127 313",
+      "loc": "454.21709187584634 441.24365437584606",
+      "size": "127 151",
       "textColor": "#FFFFFF",
-      "frac": 0.05
+      "frac": 0,
+      "at": -7
     },
     {
       "text": "Reducer",
@@ -103,49 +111,58 @@
     {
       "from": 1,
       "to": 2,
-      "text": "Entity API",
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": 2,
-      "to": -6
+      "to": -6,
+      "text": ""
     },
     {
       "from": -6,
       "to": -7,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -7,
       "to": -11,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -11,
       "to": -7,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -7,
       "to": -6,
-      "category": "two"
+      "category": "two",
+      "text": ""
     },
     {
       "from": -6,
-      "to": 3
+      "to": 3,
+      "text": ""
     },
     {
       "from": 3,
-      "to": -5
+      "to": -5,
+      "text": ""
     },
     {
       "from": -5,
-      "to": 2
+      "to": 2,
+      "text": ""
     },
     {
       "from": 2,
       "to": 1,
-      "category": "two"
+      "category": "two",
+      "text": "Selector"
     }
   ]
 }
