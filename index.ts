@@ -20,6 +20,9 @@ import ngrxHidden from './demodata/ngrx-hidden.json';
 import ngrxGetAll from './demodata/ngrx-data-getall.json';
 import ngrxGetAllTransition from './demodata/ngrx-data-getall.transition.json';
 import ngrxDataEntity from './demodata/ngrx-data-entity.json';
+import ngrxDataExtension from './demodata/ngrx-data-extension.json';
+import ngrxDataPage from './demodata/ngrx-data-page.json';
+import ngrxDataPageTransition from './demodata/ngrx-data-page.transition.json';
 
 let diagram: go.Diagram;
 const dataMap: any = {
@@ -46,6 +49,14 @@ const dataMap: any = {
   ngrxDataEntity: {
     diagram: ngrxDataEntity,
     transitions: []
+  },
+  ngrxDataExtension: {
+    diagram: ngrxDataExtension,
+    transitions: []
+  },
+  ngrxDataPage: {
+    diagram: ngrxDataPage,
+    transitions: ngrxDataPageTransition
   }
 };
 
@@ -66,7 +77,7 @@ window.addEventListener('load', () => {
   } else {
     let idx: any = -1;
     document.addEventListener('keypress', (ev: KeyboardEvent) => {
-      if (ev.key === 'Enter') {
+      if (ev.key === 'Enter' || ev.key === ' ') {
         idx = loadAndStartTransition(diagram, data.diagram, data.transitions, false, idx);
       }
     });

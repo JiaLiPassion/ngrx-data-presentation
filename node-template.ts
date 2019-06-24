@@ -20,6 +20,7 @@ export function makeButton(text: string, action: any, visiblePredicate?: any) {
 
 export function nodeInfo(d: any) {
   // Tooltip info for a node data object
+  console.log('nodeInfo', d.tooltip);
   if (d && d.tooltip) {
     return d.tooltip;
   }
@@ -81,7 +82,8 @@ export function createNodeTemplate(partContextMenu: any) {
           go.TextBlock,
           {
             margin: 4,
-            font: 'bold 20px sans-serif'
+            font: 'bold 20px sans-serif',
+            isMultiline: true
           }, // the tooltip shows the result of calling nodeInfo(data)
           new go.Binding('text', '', nodeInfo)
         )
@@ -98,6 +100,7 @@ export function createNodeTemplate(partContextMenu: any) {
         //   }
         // }
         console.log('p is selected', p.data);
+        p.diagram.toolManager.doToolTip();
       }
     }
   );
@@ -155,7 +158,7 @@ export function createLinkTemplate(partContextMenu: any, curve = false, left = t
       $(
         go.TextBlock, // the label text
         {
-          textAlign: 'center',
+          textAlign: 'left',
           segmentOffset: left ? new go.Point(NaN, NaN) : new go.Point(0, -10),
           segmentFraction: left ? 0.5 : undefined,
           segmentIndex: left ? 0 : undefined,
@@ -177,13 +180,26 @@ export function createLinkTemplate(partContextMenu: any, curve = false, left = t
           go.TextBlock,
           {
             margin: 4,
-            font: 'bold 20px sans-serif'
+            font: 'bold 20px sans-serif',
+            isMultiline: true
           }, // the tooltip shows the result of calling linkInfo(data)
           new go.Binding('text', '', linkInfo)
         )
       ),
       // the same context menu Adornment is shared by all links
-      contextMenu: partContextMenu
+      contextMenu: partContextMenu,
+      selectionChanged: function(p: any) {
+        // if (p.data.text === 'gray') {
+        //   p.layerName = 'gray';
+        //   p.diagram.model.setDataProperty(p.data, 'color', 'gray');
+        //   const layer = p.diagram.findLayer('gray');
+        //   if (layer) {
+        //     layer.opacity = 0.8;
+        //   }
+        // }
+        console.log('p is selected', p.data);
+        p.diagram.toolManager.doToolTip();
+      }
     }
   );
 }

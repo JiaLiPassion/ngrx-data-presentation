@@ -20,25 +20,26 @@
       "group": -14,
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": 1
+      "at": -6
     },
     {
       "key": 3,
       "text": "EntityCollectionReducer",
       "color": "#66a61e",
       "group": -9,
-      "loc": "64.77012125169199 117.81852008404732",
+      "loc": "31.770121251691975 89.81852008404736",
       "size": "306 54",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -5
+      "at": -5,
+      "tooltip": "Save the page from action.payload to entity collection instance"
     },
     {
       "text": "EntityCollectionCache",
       "color": "#984ea3",
       "key": -5,
       "group": -10,
-      "loc": "65.50000000000003 242.99957273945154",
+      "loc": "36.500000000000014 297.99957273945154",
       "textColor": "#FFFFFF",
       "frac": 0,
       "at": 2
@@ -48,22 +49,23 @@
       "color": "#00d2d5",
       "key": -6,
       "group": -12,
-      "loc": "289.2701212516917 177.83121133235517",
-      "size": "94 188",
+      "loc": "289.2701212516917 180.33121133235514",
+      "size": "94 147",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": 3
+      "at": -7
     },
     {
       "text": "DataService",
       "color": "#ff7f00",
       "key": -7,
       "group": -12,
-      "loc": "453.98828125000085 177.33121133235517",
-      "size": "159 187",
+      "loc": "437.9882812500009 179.33121133235517",
+      "size": "155 187",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -6
+      "at": -6,
+      "tooltip": "Save the page from http response\n data to response data"
     },
     {
       "text": "Store",
@@ -71,7 +73,7 @@
       "color": "blue",
       "key": -10,
       "group": -12,
-      "loc": "-68.11493937415395 223.74322711529757"
+      "loc": "-97.11493937415395 278.7432271152976"
     },
     {
       "text": "Backend",
@@ -88,7 +90,7 @@
       "isGroup": true,
       "color": "blue",
       "key": -9,
-      "loc": "-88.22987874830801 90.81852008404732",
+      "loc": "-121.22987874830801 62.81852008404732",
       "group": -12
     },
     {
@@ -96,7 +98,7 @@
       "isGroup": true,
       "color": "blue",
       "key": -12,
-      "loc": "-99.72987874830801 51.16285602154732",
+      "loc": "-132.729878748308 23.16285602154732",
       "group": -13
     },
     {
@@ -104,7 +106,7 @@
       "isGroup": true,
       "color": "blue",
       "key": -13,
-      "loc": "-386.2076212516922 -13.655664062500058"
+      "loc": "-386.2076212516922 -16.49280804095268"
     },
     {
       "text": "Facade",
@@ -113,6 +115,15 @@
       "key": -14,
       "group": -13,
       "loc": "-374.7076212516922 25.999999999999943"
+    },
+    {
+      "text": "PersistentResultHandler",
+      "color": "#7f80cd",
+      "key": -15,
+      "loc": "288.861623125846 42.743654375846006",
+      "size": "207 60",
+      "textColor": "#FFFFFF",
+      "tooltip": "Save the page from response data to action.payload"
     }
   ],
   "linkDataArray": [
@@ -149,10 +160,15 @@
       "from": -7,
       "to": -6,
       "category": "two",
-      "text": ""
+      "text": "Containers"
     },
     {
       "from": -6,
+      "to": -15,
+      "text": ""
+    },
+    {
+      "from": -15,
       "to": 3,
       "text": ""
     },

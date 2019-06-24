@@ -5,7 +5,7 @@
       "key": 1,
       "text": "View",
       "color": "#ff0029",
-      "loc": "-566.7923787483046 177.4873087516853",
+      "loc": "-568.7923787483045 202.4873087516853",
       "size": "186 314",
       "frac": 0,
       "at": 2,
@@ -15,55 +15,60 @@
       "key": 2,
       "text": "EntityCollectionService",
       "color": "#377eb8",
-      "loc": "-272.2076212516922 176.49999999999994",
+      "loc": "-271.2076212516923 204.49999999999991",
       "size": "205 301",
-      "group": -14,
+      "group": -16,
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": 1
+      "at": 1,
+      "tooltip": "User can extend their own EntityCollectionService"
     },
     {
       "key": 3,
       "text": "EntityCollectionReducer",
       "color": "#66a61e",
       "group": -9,
-      "loc": "64.77012125169199 117.81852008404732",
+      "loc": "64.77012125169199 144.02198891301822",
       "size": "306 54",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -5
+      "at": -5,
+      "tooltip": "1. User can replace the reducer by EntityCollectionReducerMethodsFactory\n2. User can write normal ngrx reducer"
     },
     {
       "text": "EntityCollectionCache",
       "color": "#984ea3",
       "key": -5,
       "group": -10,
-      "loc": "65.50000000000003 242.99957273945154",
+      "loc": "65.50000000000001 336.20304156842263",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": 2
+      "at": 2,
+      "tooltip": "User can add new entity level properties through Entity Metadata"
     },
     {
       "text": "EntityEffects",
       "color": "#00d2d5",
       "key": -6,
       "group": -12,
-      "loc": "289.2701212516917 177.83121133235517",
+      "loc": "306.2701212516918 202.03468016132612",
       "size": "94 188",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": 3
+      "at": 3,
+      "tooltip": "User can write normal ngrx Effects to handle own action"
     },
     {
       "text": "DataService",
       "color": "#ff7f00",
       "key": -7,
       "group": -12,
-      "loc": "453.98828125000085 177.33121133235517",
+      "loc": "453.98828125000074 203.53468016132612",
       "size": "159 187",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -6
+      "at": -6,
+      "tooltip": "User can register Customized DataService by EntityDataService.register"
     },
     {
       "text": "Store",
@@ -71,7 +76,7 @@
       "color": "blue",
       "key": -10,
       "group": -12,
-      "loc": "-68.11493937415395 223.74322711529757"
+      "loc": "-68.11493937415399 316.94669594426847"
     },
     {
       "text": "Backend",
@@ -81,14 +86,15 @@
       "size": "127 151",
       "textColor": "#FFFFFF",
       "frac": 0,
-      "at": -7
+      "at": -7,
+      "tooltip": "User can implements Customized HttpUrlGenerator to generate own url rule\n"
     },
     {
       "text": "Reducer",
       "isGroup": true,
       "color": "blue",
       "key": -9,
-      "loc": "-88.22987874830801 90.81852008404732",
+      "loc": "-88.22987874830801 117.02198891301822",
       "group": -12
     },
     {
@@ -96,7 +102,7 @@
       "isGroup": true,
       "color": "blue",
       "key": -12,
-      "loc": "-99.72987874830801 51.16285602154732",
+      "loc": "-99.72987874830801 77.36632485051823",
       "group": -13
     },
     {
@@ -104,73 +110,41 @@
       "isGroup": true,
       "color": "blue",
       "key": -13,
-      "loc": "-386.2076212516922 -13.655664062500058"
+      "loc": "-385.2076212516923 14.344335937499913"
     },
     {
       "text": "Facade",
       "isGroup": true,
       "color": "blue",
-      "key": -14,
+      "key": -16,
       "group": -13,
-      "loc": "-374.7076212516922 25.999999999999943"
+      "loc": "-373.7076212516923 53.999999999999915"
     }
   ],
   "linkDataArray": [
     {
-      "from": 1,
-      "to": 2,
-      "category": "two",
-      "text": ""
-    },
-    {
       "from": 2,
       "to": -6,
-      "text": ""
-    },
-    {
-      "from": -6,
-      "to": -7,
-      "category": "two",
-      "text": ""
-    },
-    {
-      "from": -7,
-      "to": -11,
-      "category": "two",
-      "text": ""
-    },
-    {
-      "from": -11,
-      "to": -7,
-      "category": "two",
-      "text": ""
-    },
-    {
-      "from": -7,
-      "to": -6,
-      "category": "two",
-      "text": ""
+      "text": "",
+      "tooltip": "User can register customized dispatcher to change the content of the action"
     },
     {
       "from": -6,
       "to": 3,
-      "text": ""
+      "text": "",
+      "tooltip": "User can register own persistentResultHandler to change the content save to action.payload from backend"
     },
     {
       "from": 3,
       "to": -5,
-      "text": ""
+      "text": "",
+      "tooltip": "1.User can register own EntityCollectionReducerMethods to change the content save to entity collection from action.payload\n2. User can customize merge strategy"
     },
     {
       "from": -5,
       "to": 2,
-      "text": ""
-    },
-    {
-      "from": 2,
-      "to": 1,
-      "category": "two",
-      "text": ""
+      "text": "",
+      "tooltip": "User can also register own selectors to customized EntityCollectionService"
     }
   ]
 }
