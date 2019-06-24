@@ -77,7 +77,7 @@ function updateTokens(diagram: go.Diagram, nodeFromKey: number, nodeToKey: numbe
         hasDest = false;
       } else {
         // otherwise, move fractionally closer to the NEXT node
-        data.frac = frac + 0.05;
+        data.frac = frac + 0.03;
       }
     }
   });

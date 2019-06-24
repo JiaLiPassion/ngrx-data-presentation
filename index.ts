@@ -74,14 +74,16 @@ window.addEventListener('load', () => {
   }
   if (autoStart) {
     loadAndStartTransition(diagram, data.diagram, data.transitions, true);
-  } else {
-    let idx: any = -1;
-    document.addEventListener('keypress', (ev: KeyboardEvent) => {
-      if (ev.key === 'Enter' || ev.key === ' ') {
-        idx = loadAndStartTransition(diagram, data.diagram, data.transitions, false, idx);
-      }
-    });
   }
+  let idx: any = autoStart ? 0 : -1;
+  if (!autoStart) {
+    idx = loadAndStartTransition(diagram, data.diagram, data.transitions, false, idx);
+  }
+  document.addEventListener('keypress', (ev: KeyboardEvent) => {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      idx = loadAndStartTransition(diagram, data.diagram, data.transitions, false, idx);
+    }
+  });
 });
 
 export function initDiagram(div: string) {

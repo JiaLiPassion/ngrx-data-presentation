@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "rollup --config ./rollup.config.js",
     "tsc": "tsc -p .",
-    "build": "npm run tsc && npm run bundle"
+    "build": "npm run tsc && npm run bundle",
+    "deploy": "npm run build && cp -r index.html dist public && firebase deploy"
   },
   "keywords": [],
   "author": "",
